@@ -6,17 +6,17 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(Rigidbody))]
 public class BallControl : MonoBehaviour
 {
-	// This is the force of the throw
+	// Luc nem
 	public float m_ThrowForce = 50f;
 
-	// X and Y axis damping factors for the throw direction
+	// x va y bieu thi huong nem
 	public float m_ThrowDirectionX = 0.17f;
 	public float m_ThrowDirectionY = 0.67f;
 
-	// Offset of the ball's position in relation to camera's position
+	//khoang cach cua bong voi camera
 	public Vector3 m_BallCameraOffset = new Vector3(0f, -1.4f, 3f);
 
-	// The following variables contain the state of the current throw
+	// nhung bien sau day mieu ta trang thai cu nem 
 	private Vector3 startPosition;
 	private Vector3 direction;
 	private float startTime;
@@ -43,22 +43,22 @@ public class BallControl : MonoBehaviour
 
 	private void Update(){
 
-		// We've started the touch of the screen, which will start collecting info about the ball throw
-		if(Input.GetMouseButtonDown(0)){ // Works for both Mouse and Touch on Mobile, when we press/touch
+		// Bat dau nem
+		if(Input.GetMouseButtonDown(0)){ 
 			startPosition = Input.mousePosition;
 			startTime = Time.time;
 			throwStarted = true;
 			directionChosen = false;
 		} 
-		// We've ended the touch of the screen, which will end collecting info about the ball throw
-		else if (Input.GetMouseButtonUp(0)) { // Works for both Mouse and Touch, when we release click/touch
+		// Ket thuc nem
+		else if (Input.GetMouseButtonUp(0)) { 
 			endTime = Time.time;
 			duration = endTime - startTime;
 			direction = Input.mousePosition - startPosition;
 			directionChosen = true;
 		}
 
-		// Direction was chosen, which will release/throw the ball
+		// huong duoc chon , se nem bong theo huong do
 		if (directionChosen) {
 			rb.mass = 1;
 			rb.useGravity = true;
@@ -78,7 +78,7 @@ public class BallControl : MonoBehaviour
 			directionChosen = false;
 		}
 
-		// 5 seconds after throwing the ball, we reset it's position
+		// reset lai bong sau khoang thoi gian 3 giay
 		if(Time.time - endTime >= 3 && Time.time - endTime <= 4)
 			ResetBall();
 
