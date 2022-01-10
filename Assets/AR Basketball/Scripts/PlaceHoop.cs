@@ -52,7 +52,7 @@ public class PlaceHoop : MonoBehaviour
 
     ARRaycastManager m_RaycastManager;
 
-    static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
+    static  List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 
     void Awake()
     {
@@ -62,7 +62,8 @@ public class PlaceHoop : MonoBehaviour
     void Update()
     {
     	if(isPlaced)
-    		return;
+            
+            return ;
 
         if (Input.touchCount > 0)
         {
@@ -81,13 +82,16 @@ public class PlaceHoop : MonoBehaviour
 
                     spawnedBall = Instantiate(m_BallPrefab);
                     spawnedBall.transform.parent = m_RaycastManager.transform.Find("AR Camera").gameObject.transform;
-
+                    
                     if (onPlacedObject != null)
                     {
                         onPlacedObject();
+                        
                     }
+                    
                 }
             }
         }
     }
+    
 }
